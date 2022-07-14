@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # secrets
 secrets.R
+
+# cron logs
+*.log

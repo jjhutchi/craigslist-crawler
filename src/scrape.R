@@ -2,7 +2,8 @@ library(rvest)
 library(httr)
 library(jsonlite)
 
-source("src/push_notification.R")
+
+source(file.path(here::here(), "src/push_notification.R"))
 
 # scrape the craigslist ----
 
