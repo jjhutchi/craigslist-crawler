@@ -6,8 +6,16 @@ source("src/push_notification.R")
 
 # scrape the craigslist ----
 
-# get the page
-url = "https://toronto.craigslist.org/search/toronto-on/apa?availabilityMode=0&lat=43.66166976164281&lon=-79.3920780935351&max_price=3200&min_bedrooms=2&search_distance=0.6275801554108181&sort=date"
+# Setup URL
+base = "https://toronto.craigslist.org/search/toronto-on/apa?availabilityMode=0&"
+LAT = "43.66532376779693" # are Rotman school of management
+LNG = "-79.39860792142129"
+MAX_PRICE = "3200"
+MIN_BDRM = "2"
+RADIUS = "1" # is 1.6Km
+SORT = "date"
+
+url = sprintf("%slat=%s&lon=%s&max_price=%s&min_bedrooms=%s&search_distance=%s&sort=%s", base, LAT, LNG, MAX_PRICE, MIN_BDRM, RADIUS, SORT)
 page = rvest::read_html(url)
 
 # get the url of the postings
@@ -31,15 +39,15 @@ titles = page |>
 
 # check for log, o/w make log
 if(!"listing-urls.txt" %in% list.files("data")){
-  write("Posting Title|URL", file = "data/listing-urls.txt")
+  write("Posting_Title|URL", file = "data/listing-urls.txt")
 }
 
 current_time = as.POSIXct(Sys.time(), tz = "")
 THRESH = 20 # check for new posts in past 20 minutes
-old_postings = read.delim("data/listing-urls.txt", sep = "|", header = FALSE)
+old_postings = read.delim("data/listing-urls.txt", sep = "|", header = TRUE)
 
 new_postings = links[difftime(current_time, as.POSIXct(times, tz = ""), units = "mins") < THRESH]
-new_postings = new_postings[!new_postings %in% old_postings$V2] # remove links we've already sent 
+new_postings = new_postings[!new_postings %in% old_postings$URL] # remove links we've already sent 
 new_notifications = length(new_postings)
 
 SEND_PUSH = new_notifications > 0
