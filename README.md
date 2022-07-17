@@ -14,4 +14,6 @@ base URL.
 I set up pushover notifications by following a blog post by Brian Connelly, 
 [R Phone Home: Notifications with pushoverr](https://bconnelly.net/posts/r-phone-home/). 
 
-I used `cronR` for automating the script, but any approach works. 
+I used `cronR` for automating the script, but any approach works. There can 
+probably be improvements made on how to set relative paths when scheduling 
+with cronR. 

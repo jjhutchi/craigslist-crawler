@@ -7,6 +7,6 @@ cmd = cron_rscript(script,
                    log_timestamp = TRUE)
 cron_add(command = cmd,
          frequency ='*/20 * * * *',
-         id = "Cl-Toronto-Apt",
+         id = "CL-Toronto-Apt",
          description = "Webscraping Toronto Apartments off Craigslist",
          tags = "webscraping")

@@ -1,7 +1,8 @@
 # Using Pushover for push notifications to my Phone and watch
 # inspiration blog post: https://bconnelly.net/posts/r-phone-home/
 
-source(file.path(here::here(), "src/secrets.R"))
+wd = "/Users/jordanhutchings/Documents/Documents - Jordan’s MacBook Air/MLDS/craigslist-crawler"
+source(file.path(wd, "src/secrets.R"))
 
 push = function(url, msg) {
   
