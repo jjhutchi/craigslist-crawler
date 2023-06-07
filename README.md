@@ -1,13 +1,13 @@
-# Webscraping Craigslist Apartment listings
+# Webscraping Kijiji Apartment listings
 
-I collect craigslist postings for apartments within 1.6 Km of the 
+I collect Kijiji postings for apartments within 1.5 Km of the 
 Rotman School of Management every 20 minutes. If there are any new 
 postings, I send a push notification using `pushoverr` to my iPhone 
 providing the and title and URL. 
 
 ## For Use
 
-Update the URL arguments in the `scrape.R` script. Unless you are using the 
+Update the URL arguments in the `kijiji.R` script. Unless you are using the 
 bot to look for postings in Toronto, you'll need to additionally update the 
 base URL. 
 
