@@ -35,6 +35,11 @@ triage_listings = function(listings) {
               range = start_range, 
               col_names=FALSE)
   
+  # clear and save listings to look at in new googlesheet
+  range = sprintf("A1:D%s", nrow(listings_in) + 2)
+  range_delete(ss, sheet = "New Listings", range = range, shift = "up")
+  range_write(ss, sheet = "New Listings", data = listings_out, col_names=TRUE)
+  
   listings_out
 }
 
